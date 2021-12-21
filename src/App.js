@@ -11,7 +11,6 @@ function App() {
 
 	const { add, subtract } = bindActionCreators(actionCreators, dispatch);
 
-	console.log(root);
 	return (
 		<div className="App">
 			<h1>Test Redux</h1>
