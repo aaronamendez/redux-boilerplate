@@ -1,25 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actionCreators from './actions/index';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const root = useSelector((state) => state.root);
+
+	const dispatch = useDispatch();
+
+	const { add, subtract } = bindActionCreators(actionCreators, dispatch);
+
+	console.log(root);
+	return (
+		<div className="App">
+			<h1>Test Redux</h1>
+			<h2>{root}</h2>
+			<button onClick={() => add()}>Add</button>
+			<button onClick={() => subtract()}>Subtract</button>
+		</div>
+	);
 }
 
 export default App;
